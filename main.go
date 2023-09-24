@@ -9,7 +9,22 @@ import (
 	"github.com/adrg/xdg"
 )
 
+func ensureParentDirectoryExists(filename string) error {
+	dir := filepath.Dir(filename)
+	err := os.MkdirAll(dir, 0755)
+	if err != nil {
+		return fmt.Errorf("failed to create parent directory: %v", err)
+	}
+	return nil
+}
+
 func createTestConfig(filePath string) {
+	err := ensureParentDirectoryExists(filePath)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+
 	file, err := os.Create(filePath)
 	if err != nil {
 		fmt.Println("Error creating the file:", err)
