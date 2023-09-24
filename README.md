@@ -1,3 +1,11 @@
+Purpose:
+
+Explore
+https://github.com/adrg/xdg#--------
+
+Motivation:
+I want to store some config for some app in some proper place.  xdg tells me what is the proper place.
+
 ```
 PS C:\Users\Administrator> .\purpleenvy.exe
 main.go:48: Home data directory: C:\Users\Administrator\AppData\Local
