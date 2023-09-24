@@ -62,10 +62,13 @@ func main() {
 	// ConfigFile takes one parameter which must contain the name of the file,
 	// but it can also contain a set of parent directories. If the directories
 	// don't exist, they will be created relative to the base config directory.
-	configFilePath, err := xdg.ConfigFile("appname/config.yaml")
+
+	configRelPath := "appname/config.yaml"
+	configFilePath, err := xdg.ConfigFile(configRelPath)
 	if err != nil {
 		log.Fatal(err)
 	}
+	createTestConfig(configFilePath)
 	log.Println("Save the config file at:", configFilePath)
 
 	// For other types of application files use:
@@ -73,12 +76,6 @@ func main() {
 	// xdg.StateFile()
 	// xdg.CacheFile()
 	// xdg.RuntimeFile()
-
-	configRelPath := "appname/config.yaml"
-	config, _ := xdg.ConfigFile(configRelPath)
-	path, _ := filepath.Abs(config)
-
-	createTestConfig(path)
 
 	// Finding application config files.
 	// SearchConfigFile takes one parameter which must contain the name of
