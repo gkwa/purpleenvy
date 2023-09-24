@@ -42,6 +42,8 @@ func createTestConfig(filePath string) {
 }
 
 func main() {
+	log.SetFlags(log.Lshortfile)
+
 	// XDG Base Directory paths.
 	log.Println("Home data directory:", xdg.DataHome)
 	log.Println("Data directories:", xdg.DataDirs)
