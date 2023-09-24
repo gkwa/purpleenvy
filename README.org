@@ -1,4 +1,4 @@
-```powershell
+```
 PS C:\Users\Administrator> .\purpleenvy.exe
 main.go:48: Home data directory: C:\Users\Administrator\AppData\Local
 main.go:49: Data directories: [C:\Users\Administrator\AppData\Roaming C:\ProgramData]
