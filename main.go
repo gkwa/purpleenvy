@@ -1,10 +1,30 @@
 package main
 
 import (
+	"fmt"
 	"log"
+	"os"
+	"path/filepath"
 
 	"github.com/adrg/xdg"
 )
+
+func createTestConfig(filePath string) {
+	file, err := os.Create(filePath)
+	if err != nil {
+		fmt.Println("Error creating the file:", err)
+		return
+	}
+	defer file.Close()
+
+	_, err = file.WriteString("Hello, Golang!")
+	if err != nil {
+		fmt.Println("Error writing to the file:", err)
+		return
+	}
+
+	fmt.Println("File created successfully.")
+}
 
 func main() {
 	// XDG Base Directory paths.
@@ -36,6 +56,10 @@ func main() {
 	// xdg.StateFile()
 	// xdg.CacheFile()
 	// xdg.RuntimeFile()
+
+	path, _ := filepath.Abs("/home/runner/.config/appname/config.yaml")
+
+	createTestConfig(path)
 
 	// Finding application config files.
 	// SearchConfigFile takes one parameter which must contain the name of
