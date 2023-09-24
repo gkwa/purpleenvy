@@ -74,7 +74,9 @@ func main() {
 	// xdg.CacheFile()
 	// xdg.RuntimeFile()
 
-	path, _ := filepath.Abs("/home/runner/.config/appname/config.yaml")
+	configRelPath := "appname/config.yaml"
+	config, _ := xdg.ConfigFile(configRelPath)
+	path, _ := filepath.Abs(config)
 
 	createTestConfig(path)
 
@@ -82,7 +84,7 @@ func main() {
 	// SearchConfigFile takes one parameter which must contain the name of
 	// the file, but it can also contain a set of parent directories relative
 	// to the config search paths (xdg.ConfigHome and xdg.ConfigDirs).
-	configFilePath, err = xdg.SearchConfigFile("appname/config.yaml")
+	configFilePath, err = xdg.SearchConfigFile(configRelPath)
 	if err != nil {
 		log.Fatal(err)
 	}
